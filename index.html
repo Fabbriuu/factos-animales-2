@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐾 Facts de Animales 🐾</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Fondo oscuro */
+            color: #ffffff; /* Texto blanco */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+            color: #4caf50; /* Verde brillante */
+            text-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+        }
+
+        .button-container {
+            margin: 30px;
+        }
+
+        button {
+            font-size: 1.2rem;
+            padding: 15px 25px;
+            margin: 10px;
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+            cursor: pointer;
+            background-color: transparent;
+            color: #4caf50;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4caf50;
+            color: #121212;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+        }
+
+        #fact-container {
+            margin: 30px auto;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #1e1e1e;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            margin-top: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐾 Facts de Animales 🐾</h1>
+    <div class="button-container">
+        <button onclick="getFact('cat')">🐱 Fact de Gato</button>
+        <button onclick="getFact('dog')">🐶 Fact de Perro</button>
+        <button onclick="getFact('capybara')">🦫 Fact de Carpincho</button>
+        <button onclick="getFact('guinea_pig')">🐹 Fact de Cobayo</button>
+    </div>
+    <div id="fact-container">
+        <p id="animal-fact">¡Haz clic en un botón para obtener un fact!</p>
+    </div>
+
+    <footer>
+        <p>Creado con ❤️ para los amantes de los animales.</p>
+    </footer>
+
+    <script>
+        const catFacts = [
+            "Los gatos tienen más huesos que los humanos: ¡poseen 230 huesos!",
+            "Los gatos pueden girar sus orejas hasta 180 grados.",
+            "Los gatos pasan el 70% de su vida durmiendo.",
+            "Un grupo de gatos se llama clowder.",
+            "El ronroneo de un gato tiene propiedades curativas.",
+            "Los gatos no pueden saborear lo dulce.",
+            "El gato doméstico más rápido puede alcanzar 48 km/h.",
+            "Los gatos tienen 32 músculos en cada oreja.",
+            "Los gatos fueron domesticados por primera vez en Egipto hace más de 4,000 años."
+        ];
+
+        const dogFacts = [
+            "El perro más rápido es el galgo, que puede correr a 72 km/h.",
+            "Los perros sudan a través de las almohadillas de sus patas.",
+            "Los perros tienen 18 músculos en cada oreja.",
+            "La nariz de un perro es tan única como una huella dactilar humana.",
+            "El Border Collie es considerado el perro más inteligente del mundo.",
+            "Los perros pueden aprender hasta 250 palabras y gestos.",
+            "El Labrador Retriever es la raza más popular en el mundo.",
+            "Los perros tienen tres párpados: superior, inferior y membrana nictitante.",
+            "El sentido del olfato de un perro es 40 veces más sensible que el de los humanos."
+        ];
+
+        const capybaraFacts = [
+            "Los carpinchos son los roedores más grandes del mundo.",
+            "Los carpinchos pueden dormir en el agua, solo dejando su nariz fuera.",
+            "Son animales extremadamente sociales y viven en grupos grandes.",
+            "Un carpincho adulto puede pesar hasta 65 kg.",
+            "Los carpinchos tienen patas palmeadas para nadar mejor.",
+            "Aunque son roedores, se llevan bien con otras especies de animales.",
+            "Los carpinchos tienen dientes que crecen constantemente.",
+            "Son conocidos por ser 'los animales más relajados del planeta'.",
+            "En Japón, los carpinchos disfrutan de baños termales en invierno."
+        ];
+
+        const guineaPigFacts = [
+            "Los cobayos no pueden sintetizar vitamina C y necesitan obtenerla de su dieta.",
+            "Los cobayos son animales sociales y viven en grupos en la naturaleza.",
+            "Los dientes de los cobayos crecen constantemente y necesitan desgaste.",
+            "Los cobayos pueden comunicarse con una variedad de sonidos, como chillidos y ronroneos.",
+            "Un cobayo promedio vive entre 5 y 7 años.",
+            "Los cobayos tienen una excelente visión periférica.",
+            "Son originarios de América del Sur y han sido domesticados por siglos.",
+            "Los cobayos tienen dedos palmeados en las patas traseras.",
+            "Un grupo de cobayos es llamado una manada."
+        ];
+
+        function getFact(animalType) {
+            const factContainer = document.getElementById("animal-fact");
+            let fact = "";
+
+            if (animalType === "cat") {
+                fact = catFacts[Math.floor(Math.random() * catFacts.length)];
+            } else if (animalType === "dog") {
+                fact = dogFacts[Math.floor(Math.random() * dogFacts.length)];
+            } else if (animalType === "capybara") {
+                fact = capybaraFacts[Math.floor(Math.random() * capybaraFacts.length)];
+            } else if (animalType === "guinea_pig") {
+                fact = guineaPigFacts[Math.floor(Math.random() * guineaPigFacts.length)];
+            }
+
+            factContainer.textContent = fact;
+        }
+    </script>
+</body>
+</html>
